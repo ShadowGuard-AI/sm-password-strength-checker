@@ -14,7 +14,7 @@ sm-Password-Strength-Checker evaluates one password supplied on the command line
 ### Installation
 
 ```
-git clone https://github.com/ShadowGuardAI/sm-password-strength-checker.git
+git clone https://github.com/ShadowGuard-AI/sm-password-strength-checker.git
 cd sm-password-strength-checker
 ```
 
