@@ -71,6 +71,8 @@ def check_password_strength(password, min_length=8, min_uppercase=1,
     """
     if len(password) < min_length:
         return f"Weak: Password must be at least {min_length} characters long."
+    # My classes are ASCII ranges only. A capital letter outside A to Z, or a digit from
+    # another script, earns no credit here even though the person typing it did what was asked.
     if len(re.findall(r'[A-Z]', password)) < min_uppercase:
         if min_uppercase == 1:
             return "Weak: Password must contain at least one uppercase letter."
@@ -81,6 +83,8 @@ def check_password_strength(password, min_length=8, min_uppercase=1,
         if min_digits == 1:
             return "Weak: Password must contain at least one digit."
         return f"Weak: Password must contain at least {min_digits} digits."
+    # The special set is this fixed list. A dash, an underscore, a plus sign, a bracket, or a
+    # space in the password earns no special credit from me.
     if len(re.findall(r'[!@#$%^&*(),.?":{}|<>]', password)) < min_special:
         if min_special == 1:
             return "Weak: Password must contain at least one special character."
@@ -100,6 +104,9 @@ def main():
 
         password = args.password
         logging.info("Evaluating password strength...")
+        # The password arrives as a command line argument, which puts it in shell history and in
+        # the process list while I run. That trade suits a quick check and not a password that
+        # matters, and the Weak verdict below still exits 0, so only the printed word carries it.
         result = check_password_strength(
             password,
             min_length=args.min_length,
