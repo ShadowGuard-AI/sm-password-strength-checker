@@ -34,7 +34,7 @@ python main.py --version
 - `-s`, `--min-special`: minimum number of special characters (default: 1)
 - `--version`: print `sm-Password-Strength-Checker 1.0` and exit
 
-At least one lowercase letter is always required and cannot be configured. The special characters recognised are the characters in `!@#$%^&*(),.?":{}|<>`. Minimum length must be at least 1 and the other minimums must be 0 or more; invalid values are rejected with an argparse error and exit status 2. Running without a password also exits with status 2.
+At least one lowercase letter is always required and cannot be configured. The special characters recognised are the characters in `!@#$%^&*(),.?":{}|<>`; characters outside that set, such as an underscore, do not count as special characters. Uppercase, lowercase, and digit checks count ASCII characters only (A to Z, a to z, and 0 to 9); letters and digits outside those ASCII ranges do not count toward those minimums. Minimum length must be at least 1 and the other minimums must be 0 or more; invalid values are rejected with an argparse error and exit status 2. Running without a password also exits with status 2.
 
 ### Examples with verified output
 
