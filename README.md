@@ -1,3 +1,5 @@
+![Banner](banner.png)
+
 ## sm-Password-Strength-Checker
 
 ### Project Description
